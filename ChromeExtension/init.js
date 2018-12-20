@@ -713,9 +713,7 @@
 
                 exports["946c898d"].exports.Sounds.hits.player_bullet_hit_01.name = 'audio/hits/pan_bullet_hit_01.mp3';
 
-                Object.keys(bullets).forEach(function (key) {
-                    bullets[key].tracerWidth += 0.1;
-                });
+                
 
                 // console.log( exports.e5d16b4d.exports );
                 // console.log( exports.a508b62a.exports );
@@ -925,6 +923,10 @@
                             options.bulletRecolor ? options.bulletRecolor = false : options.bulletRecolor = true;
                         }
                         if (options.bulletRecolor) { 
+                            //resize
+                            Object.keys(bullets).forEach(function (key) {
+                                bullets[key].tracerWidth += 0.1;
+                            });
                             // Make 9mm bullets yellow
                             tracerColors["9mm"].regular = 16756224;
                             tracerColors["9mm"].saturated = 16756224;
@@ -968,6 +970,7 @@
                     
                     };
                 _barrelRecolorCb(true);
+                
                 var autoAimBind = function () {
                         autoAim.bind({
                             targetEnemyNicknameVisibility: options.autoAim.targetEnemyNicknameVisibility,
@@ -1093,7 +1096,8 @@
                     },
                     vn = false,
                     hn = function (n) {
-                        90 == n.which && (gn() || (vn ? (Tn(), G = true) : xn()))
+                        //console.log(n)
+                        27 == n.which && (gn() || (vn ? (Tn(), G = true) : xn()))
                     };
                 scripts.menu(obfuscate, game, options, {
                     particlesTransparencyCb: w,
@@ -1166,7 +1170,7 @@
                     storeOptionsCb: function () {
                         c(l, options)
                     }
-                }).bind(), window.removeEventListener("keyup", hn), window.addEventListener("keyup", hn)
+                }).bind(), window.removeEventListener("keydown", hn), window.addEventListener("keydown", hn)
             } else console.log("Error: Exports not defined, return.");
 
             function xn() {
@@ -1872,11 +1876,7 @@
 							var allow_auto_aim_if_no_collisions = isNotCollideble( tt );
 						}
 						
-						if ( allow_auto_aim_if_no_collisions ) {
-							console.log( 'no collisions' );
-						} else {
-							console.log( 'there area collisions, move to other player of disable auto aim' );
-						}
+						
 
 						T(function () {
 							var t = [];
@@ -1892,7 +1892,6 @@
 								// var clicked = false
 								// }
 								//p && (l.showEnemiesActions && C(p), (i = p)[n.activePlayer.netData].dead || i[n.activePlayer.netData].downed || getTeam(a, o, d, r[c]) || clicked || !checkLayer(s, p) || (t[r[c]] = p))
-								//console.log( 'test' );
 								//var th = ;
 								
 								p && (l.showEnemiesActions && C(p), (i = p)[n.activePlayer.netData].dead || i[n.activePlayer.netData].downed || getTeam(a, o, d, r[c]) || !checkLayer(s, p) || (t[r[c]] = p))
@@ -3428,6 +3427,7 @@
     29: [function (n, e, t) {
         "use strict";
         e.exports = function (n, e, t) {
+
             var isBinded = false,
                 o = null,
                 realMousePos = {
@@ -3444,8 +3444,9 @@
                         playerIds = Object.keys(e.scope[n.playerBarn.main][n.playerBarn.players])
                     for (var i = 0; i < playerIds.length; i++) {
                         var enemyObject = e.scope[n.objectCreator].idToObj[playerIds[i]]
-                        if (enemyObject && enemyObject.__id != e.scope[n.activeId] && !e.scope[n.objectCreator].idToObj[playerIds[i]][n.activePlayer.localData].dead && !e.scope[n.objectCreator].idToObj[playerIds[i]][n.activePlayer.netData].downed && e.scope[n.playerBarn.main][n.playerBarn.players][playerIds[i]].teamId != curTeamId) {
-                            result[playerIds[i]] = e.scope[n.objectCreator].idToObj[playerIds[i]];
+                        if(typeof(enemyObject)!=="undefined"&&enemyObject.__id!=e.scope[n.activeId])
+                        if (enemyObject && enemyObject.__id != e.scope[n.activeId] && !enemyObject.dead && !enemyObject.downed && e.scope[n.playerBarn.main][n.playerBarn.players][playerIds[i]].teamId != curTeamId) {
+                            result[playerIds[i]] = e.scope[n.objectCreator][playerIds[i]];
                         }
                     }
                     return result
