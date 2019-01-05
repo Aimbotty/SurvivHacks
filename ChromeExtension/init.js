@@ -604,7 +604,7 @@
                 grenadeTimer: n("./plugins/grenadeTimer.js"),
                 laserPointer: n("./plugins/laserPointer.js"),
                 fpsCounter: n("./plugins/fpsCounter.js"),
-                triggerBot: n("./plugins/tiggerBot.js"),
+                triggerBot: n("./plugins/triggerBot.js"),
                 autoDodge: n("./plugins/autoDodge.js"),
                 autoFire: n("./plugins/autoFire.js"),
                 autoHeal: n("./plugins/autoHeal.js"),
@@ -682,7 +682,7 @@
                     airDropTracking: {
                         enabled: true
                     },
-                    tiggerBot: {
+                    triggerBot: {
                         enabled: true
                     },
                     autoDodge: {
@@ -1015,7 +1015,7 @@
                     airDropTrackingRenderCb: function () {
                         q(airDropTracking) && airDropTracking.render()
                     },
-                    tiggerBotRenderCb: function () {
+                    triggerBotRenderCb: function () {
                         q(triggerBot) && triggerBot.render()
                     },
                     autoFireRenderCb: function () {
@@ -1085,7 +1085,7 @@
                     An = function () {
                         window.addEventListener("keydown", fn), window.addEventListener("keyup", bn), options.autoAim.enabled && !autoAim.isBinded() && autoAimBind(), options.autoLoot.enabled && !autoLoot.isBinded() && autoLootBind(), options.autoHeal.enabled && !autoHeal.isBinded() && autoHeal.bind(), options.autoSwitch.enabled && !autoSwitch.isBinded() && autoSwitch.bind(), options.streamerMode.enabled && !streamerMode.isBinded() && streamerMode.bind(), options.autoOpeningDoors.enabled && !autoOpeningDoors.isBinded() && autoOpeningDoors.bind(), bigMapManager.isBinded() || bigMapManager.bind(options.bigMapTransparency), options.grenadeTimer.enabled && !grenadeTimer.isBinded() && grenadeTimer.bind(), options.laserPointer.enabled && !laserPointer.isBinded() && laserPointer.bind(), options.linesToPlayers.enabled && !linesToPlayers.isBinded() && linesToPlayers.bind(), options.autoFire.enabled && !autoFire.isBinded() && autoFire.bind(), options.zoomRadiusManager.enabled && !zoomRadiusManager.isBinded() && zoomRadiusManager.bind(), smokeAlphaManager.isBinded() || smokeAlphaManager.bind({
                             smokeAlpha: options.smokeGrenadeAlpha
-                        }), options.fpsCounter.enabled && !fpsCounter.isBinded() && fpsCounter.bind(), options.airDropTracking.enabled && !airDropTracking.isBinded() && airDropTracking.bind(), options.tiggerBot.enabled && !triggerBot.isBinded() && triggerBot.bind(), options.autoDodge.enabled && !autoDodge.isBinded() && autoDodge.bind(), window.events.bind()
+                        }), options.fpsCounter.enabled && !fpsCounter.isBinded() && fpsCounter.bind(), options.airDropTracking.enabled && !airDropTracking.isBinded() && airDropTracking.bind(), options.triggerBot.enabled && !triggerBot.isBinded() && triggerBot.bind(), options.autoDodge.enabled && !autoDodge.isBinded() && autoDodge.bind(), window.events.bind()
                     },
                     yn = function () {
                         window.removeEventListener("keydown", fn), window.removeEventListener("keyup", bn), autoAim.isBinded() && autoAimUnbind(), autoLoot.isBinded() && autoLootUnbind(), autoHeal.isBinded() && autoHeal.unbind(), autoSwitch.isBinded() && autoSwitch.unbind(), streamerMode.isBinded() && streamerMode.unbind(), autoOpeningDoors.isBinded() && autoOpeningDoors.unbind(), bigMapManager.isBinded() && bigMapManager.unbind(), grenadeTimer.isBinded() && grenadeTimer.unbind(), laserPointer.isBinded() && laserPointer.unbind(), linesToPlayers.isBinded() && linesToPlayers.unbind(), autoFire.isBinded() && autoFire.unbind(), zoomRadiusManager.isBinded() && zoomRadiusManager.unbind(), smokeAlphaManager.isBinded() && smokeAlphaManager.unbind(), fpsCounter.isBinded() && fpsCounter.unbind(), airDropTracking.isBinded() && airDropTracking.unbind(), triggerBot.isBinded() && triggerBot.unbind(), autoDodge.isBinded() && autoDodge.unbind(), window.events.unbind()
@@ -1159,8 +1159,8 @@
                     fpsCounterEnableCb: function () {
                         options.fpsCounter.enabled ? (q(fpsCounter) && fpsCounter.unbind(), options.fpsCounter.enabled = false) : options.fpsCounter.enabled || (!q(fpsCounter) && Q() && fpsCounter.bind(), options.fpsCounter.enabled = true)
                     },
-                    tiggerBotEnableCb: function () {
-                        options.tiggerBot.enabled ? (q(triggerBot) && triggerBot.unbind(), options.tiggerBot.enabled = false) : options.tiggerBot.enabled || (!q(triggerBot) && Q() && triggerBot.bind(), options.tiggerBot.enabled = true)
+                    triggerBotEnableCb: function () {
+                        options.triggerBot.enabled ? (q(triggerBot) && triggerBot.unbind(), options.triggerBot.enabled = false) : options.triggerBot.enabled || (!q(triggerBot) && Q() && triggerBot.bind(), options.triggerBot.enabled = true)
                     },
                     autoDodgeEnableCb: function () {
                         options.autoDodge.enabled ? (q(autoDodge) && autoDodge.unbind(), options.autoDodge.enabled = false) : options.autoDodge.enabled || (!q(autoDodge) && Q() && autoDodge.bind(), options.autoDodge.enabled = true)
@@ -1202,7 +1202,7 @@
         "./plugins/linesToPlayers.js": 24,
         "./plugins/menu.js": 25,
         "./plugins/smokeAlphaManager.js": 26,
-        "./plugins/tiggerBot.js": 27,
+        "./plugins/triggerBot.js": 27,
         "./plugins/zoomRadiusManager.js": 28,
         "./plugins/autoSwitch.js": 29,
         "./plugins/streamerMode.js": 30,
@@ -2671,10 +2671,10 @@
                         type: "checkbox",
                         description: "TriggerBot enabled",
                         inputProps: {
-                            value: "tiggerBot.enabled"
+                            value: "triggerBot.enabled"
                         },
                         callbacks: {
-                            value: "tiggerBotEnableCb"
+                            value: "triggerBotEnableCb"
                         },
                         tabId: 0
                     }, {
@@ -3352,10 +3352,10 @@
                     };
                 return {
                     bind: function () {
-                        window.events.add("playerBarn", "tiggerBotRenderCb"), o = true
+                        window.events.add("playerBarn", "triggerBotRenderCb"), o = true
                     },
                     unbind: function () {
-                        window.events.remove("playerBarn", "tiggerBotRenderCb"), o = false, window.autoFire = false
+                        window.events.remove("playerBarn", "triggerBotRenderCb"), o = false, window.autoFire = false
                     },
                     isBinded: function () {
                         return o
