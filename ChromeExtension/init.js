@@ -712,11 +712,11 @@
                     keys = exports["4b8d140f"].exports.Key;
 
                 exports["946c898d"].exports.Sounds.hits.player_bullet_hit_01.name = 'audio/hits/pan_bullet_hit_01.mp3';
-
-                Object.keys(bullets).forEach(function (key) {
-                    bullets[key].tracerWidth += 0.1;
-                });
-
+                if (!options.streamerMode.enabled) {
+                    Object.keys(bullets).forEach(function (key) {
+                        bullets[key].tracerWidth += 0.1;
+                    });
+                }
                 // console.log( exports.e5d16b4d.exports );
                 // console.log( exports.a508b62a.exports );
                 // console.log( exports.a48f3bb2.exports );
@@ -726,12 +726,12 @@
                 setInterval(function () {
                     game.scope
                 }, 2e3);
-                
+
                 this.console.log(exports)
                 this.console.log(options)
-				
 
-				// game_scope
+
+                // game_scope
                 /*
                 setInterval(function () {
                     console.log(game.scope)
@@ -818,7 +818,7 @@
                 p.stone_02.img.tint = options.particlesTransparency
 
                 Object.keys(bullets).forEach(function (e) {
-                    if (e.suppressed){
+                    if (e.suppressed) {
                         e.suppressed = false
                     }
                 })
@@ -879,7 +879,7 @@
                     autoAim.isBinded() && options.autoAim.enabled && (autoAimUnbind(), autoAimBind())
                 };
 
-                aaNicknameVisCb = function () {
+                    aaNicknameVisCb = function () {
                         options.autoAim.targetEnemyNicknameVisibility = !options.autoAim.targetEnemyNicknameVisibility, autoAim.setTargetEnemyNicknameVisibility(options.autoAim.targetEnemyNicknameVisibility), H()
                     }, aaForwardFiringCoeffCb = function (n) {
                         options.autoAim.forwardFiringCoeff = parseFloat(n), autoAim.setForwardFiringCoeff(options.autoAim.forwardFiringCoeff), H()
@@ -925,7 +925,7 @@
                         if (!n) {
                             options.bulletRecolor ? options.bulletRecolor = false : options.bulletRecolor = true;
                         }
-						
+
                         if (options.bulletRecolor) {
                             // Make 9mm bullets yellow
                             tracerColors["9mm"].regular = 16756224;
@@ -942,7 +942,7 @@
                             // Make 556mm bullets green
                             tracerColors["556mm"].regular = 237056;
                             tracerColors["556mm"].saturated = 237056;
-							
+
                             //Make .45 ACP purple
                             tracerColors["45acp"].regular = 7536811;
                             tracerColors["45acp"].saturated = 7536811;
@@ -950,24 +950,24 @@
                             // Make 9mm bullets default
                             tracerColors["9mm"].regular = 16704198;
                             tracerColors["9mm"].saturated = 16767411;
-        
+
                             // Make 7.62mm bullets default
                             tracerColors["762mm"].regular = 12965630;
                             tracerColors["762mm"].saturated = 11257087;
-        
+
                             // Make 12gauge bullets default
                             tracerColors["12gauge"].regular = 16702684;
                             tracerColors["12gauge"].saturated = 16702684;
-        
+
                             // Make 556mm bullets default
                             tracerColors["556mm"].regular = 11141010;
                             tracerColors["556mm"].saturated = 11141010;
-							
+
                             // Make .45 ACP default
                             tracerColors["45acp"].regular = 15515391;
                             tracerColors["45acp"].saturated = 15183103;
-						}
-                    
+                        }
+
                     };
                 _barrelRecolorCb(true);
                 var autoAimBind = function () {
@@ -1333,46 +1333,46 @@
             }
         }
     }, {}],
-    12: [function (n, e, t) {//game_vars
+    12: [function (n, e, t) { //game_vars
         "use strict";
         e.exports = {
-			// fe: o {game: r, particleBarn: l, localization: i, touch: e, inputBinds: e, …}
+            // fe: o {game: r, particleBarn: l, localization: i, touch: e, inputBinds: e, …}
             menu: "fe",
-			// N: i {pos: {…}, ppu: 16, zoom: 1.132234974067752, f: 0.5785845588235294, screenWidth: 1259, …}
+            // N: i {pos: {…}, ppu: 16, zoom: 1.132234974067752, f: 0.5785845588235294, screenWidth: 1259, …}
             camera: "N",
-			// Ee: o {bullets: Array(0)}
+            // Ee: o {bullets: Array(0)}
             bullets: "Oe",
-			// can not find planes variable
+            // can not find planes variable
             planes: "Re",
-			// ct: 3058
+            // ct: 3058
             activeId: "ct",
-			// f: 1
+            // f: 1
             targetZoom: "f",
-			// lt: r {idToObj: {…}, types: {…}, seenCount: 34}
+            // lt: r {idToObj: {…}, types: {…}, seenCount: 34}
             objectCreator: "lt",
-			// Ye: i {Gt: false, dirty: false, container: e, mobileOffset: 0, clientData: {…}, …}
+            // Ye: i {Gt: false, dirty: false, container: e, mobileOffset: 0, clientData: {…}, …}
             pieTimer: "Je",
-			// Ae: s {display: {…}, width: 720, height: 720, seed: 192487212, biome: 1, …}
+            // Ae: s {display: {…}, width: 720, height: 720, seed: 192487212, biome: 1, …}
             map: "Ae",
             input: {
-				// ge: e {input: o, config: e, binds: Array(36), boundKeys: {…}, menuHovered: false}
+                // ge: e {input: o, config: e, binds: Array(36), boundKeys: {…}, menuHovered: false}
                 main: "ye",
                 input: "input",
                 mousePressed: "$"
             },
             activePlayer: {
-				// dt: n {bodySprite: e, chestSprite: e, helmetSprite: e, backpackSprite: e, handLSprite: e, …}
+                // dt: n {bodySprite: e, chestSprite: e, helmetSprite: e, backpackSprite: e, handLSprite: e, …}
                 main: "dt",
                 netData: "q",
                 localData: "U"
             },
             playerBarn: {
-				// Ie: s {it: i, It: {…}, teamInfo: {…}, teammateData: {…}}
+                // Ie: s {it: i, It: {…}, teamInfo: {…}, teammateData: {…}}
                 main: "De",
                 players: "It"
             },
             lootBarn: {
-				// He: r {rt: i, Ct: null}
+                // He: r {rt: i, Ct: null}
                 main: "Ke",
                 itemf: "Ct",
                 lootPool: "rt",
@@ -1428,12 +1428,12 @@
                 },
                 render: function () {
                     // t && e.scope.initialized && (s(), function () {
-                        // var t = e.scope[n.planes].planes,
-                            // a = t.length;
-                        // if (a > 0) {
-                            // for (var o = 0; o < a; o++) r(t[o]);
-                            // t[a - 1].id != i.lastPlaneId && (i.lastPlaneId = t[a - 1].id, notifications.create("info", "Attention, the next plane is coming!", "OK", 5e3))
-                        // }
+                    // var t = e.scope[n.planes].planes,
+                    // a = t.length;
+                    // if (a > 0) {
+                    // for (var o = 0; o < a; o++) r(t[o]);
+                    // t[a - 1].id != i.lastPlaneId && (i.lastPlaneId = t[a - 1].id, notifications.create("info", "Attention, the next plane is coming!", "OK", 5e3))
+                    // }
                     // }())
                 }
             }
@@ -1492,45 +1492,45 @@
                             return !e.scope[n.input.main][n.input.input].mouseButtons["2"]
                         }
                     },
-					l_function = function (n) {
-						return !! function (n) {
-							return c_function(n.A, n.B, n.C) || c_function(n.A, n.B, n.D) || c_function(n.C, n.D, n.A) || c_function(n.C, n.D, n.B)
-						}(n) || !(p_function(n.A, n.B, n.C) * p_function(n.A, n.B, n.D) >= 0 || p_function(n.C, n.D, n.A) * p_function(n.C, n.D, n.B) >= 0)
-					},
-					c_function = function (n, e, t) {
-						return 0 == n.x * e.y + e.x * t.y + t.x * n.y - t.x * e.y - n.x * t.y - e.x * n.y && Math.min([n.x, e.x]) <= t.x && t.x <= Math.max([n.x, e.x]) && Math.min([n.y, e.y]) <= t.y && t.y <= Math.max([n.y], e.y)
-					},
-					p_function = function (n, e, t) {
-						return n.x * e.y + e.x * t.y + t.x * n.y - t.x * e.y - n.x * t.y - e.x * n.y
-					},
-					isNotCollideble = function (t) {
-						var pos = (u = e.scope[n.activePlayer.main]).pos,
-							objects = e.scope[n.objectCreator].idToObj,
-							collidableObjects = Object.keys(objects).filter(function (n) {
-								var curObj = objects[n];
-								
-								return void 0 !== objects[n].collidable && objects[n].collidable && !objects[n].destructible;
-							}, ),
-							p = [];
-						//console.log(pos)
-						p.A = [], p.B = [], p.C = [], p.D = [], p.A.x = pos.x, p.A.y = pos.y, p.B.x = t.x, p.B.y = t.y;
-						var d = true;
-						collidableObjects.forEach(function (n, e, t) {
-							var i;
-							objects[n].layer !== u.layer || objects[n].dead || void 0 !== (i = objects[n]).img && i.img.indexOf("window") > -1 || (void 0 !== objects[n].collider && void 0 !== objects[n].collider.min && void 0 !== objects[n].collider.max ? (p.C.x = objects[n].collider.min.x, p.C.y = objects[n].collider.min.y, p.D.x = objects[n].collider.max.x, p.D.y = objects[n].collider.min.y, l_function(p) && (d = false), p.C.x = objects[n].collider.max.x, p.C.y = objects[n].collider.min.y, p.D.x = objects[n].collider.max.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false), p.C.x = objects[n].collider.max.x, p.C.y = objects[n].collider.max.y, p.D.x = objects[n].collider.min.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false), p.C.x = objects[n].collider.min.x, p.C.y = objects[n].collider.max.y, p.D.x = objects[n].collider.min.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false)) : function (n, e, t, i, a, o) {
-								var r, s, l = a - t,
-									c = o - i,
-									p = l * l + c * c,
-									d = -1;
-								0 != p && (d = ((n - t) * l + (e - i) * c) / p), d < 0 ? (r = t, s = i) : d > 1 ? (r = a, s = o) : (r = t + d * l, s = i + d * c);
-								var u = n - r,
-									m = e - s;
-								return Math.sqrt(u * u + m * m)
-							}(objects[n].collider.pos.x, objects[n].collider.pos.y, p.A.x, p.A.y, p.B.x, p.B.y) <= objects[n].collider.rad && (d = false))
-						});
-						var u = e.scope[n.activePlayer.main];
-						return d;
-					},
+                    l_function = function (n) {
+                        return !! function (n) {
+                            return c_function(n.A, n.B, n.C) || c_function(n.A, n.B, n.D) || c_function(n.C, n.D, n.A) || c_function(n.C, n.D, n.B)
+                        }(n) || !(p_function(n.A, n.B, n.C) * p_function(n.A, n.B, n.D) >= 0 || p_function(n.C, n.D, n.A) * p_function(n.C, n.D, n.B) >= 0)
+                    },
+                    c_function = function (n, e, t) {
+                        return 0 == n.x * e.y + e.x * t.y + t.x * n.y - t.x * e.y - n.x * t.y - e.x * n.y && Math.min([n.x, e.x]) <= t.x && t.x <= Math.max([n.x, e.x]) && Math.min([n.y, e.y]) <= t.y && t.y <= Math.max([n.y], e.y)
+                    },
+                    p_function = function (n, e, t) {
+                        return n.x * e.y + e.x * t.y + t.x * n.y - t.x * e.y - n.x * t.y - e.x * n.y
+                    },
+                    isNotCollideble = function (t) {
+                        var pos = (u = e.scope[n.activePlayer.main]).pos,
+                            objects = e.scope[n.objectCreator].idToObj,
+                            collidableObjects = Object.keys(objects).filter(function (n) {
+                                var curObj = objects[n];
+
+                                return void 0 !== objects[n].collidable && objects[n].collidable && !objects[n].destructible;
+                            }, ),
+                            p = [];
+                        //console.log(pos)
+                        p.A = [], p.B = [], p.C = [], p.D = [], p.A.x = pos.x, p.A.y = pos.y, p.B.x = t.x, p.B.y = t.y;
+                        var d = true;
+                        collidableObjects.forEach(function (n, e, t) {
+                            var i;
+                            objects[n].layer !== u.layer || objects[n].dead || void 0 !== (i = objects[n]).img && i.img.indexOf("window") > -1 || (void 0 !== objects[n].collider && void 0 !== objects[n].collider.min && void 0 !== objects[n].collider.max ? (p.C.x = objects[n].collider.min.x, p.C.y = objects[n].collider.min.y, p.D.x = objects[n].collider.max.x, p.D.y = objects[n].collider.min.y, l_function(p) && (d = false), p.C.x = objects[n].collider.max.x, p.C.y = objects[n].collider.min.y, p.D.x = objects[n].collider.max.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false), p.C.x = objects[n].collider.max.x, p.C.y = objects[n].collider.max.y, p.D.x = objects[n].collider.min.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false), p.C.x = objects[n].collider.min.x, p.C.y = objects[n].collider.max.y, p.D.x = objects[n].collider.min.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false)) : function (n, e, t, i, a, o) {
+                                var r, s, l = a - t,
+                                    c = o - i,
+                                    p = l * l + c * c,
+                                    d = -1;
+                                0 != p && (d = ((n - t) * l + (e - i) * c) / p), d < 0 ? (r = t, s = i) : d > 1 ? (r = a, s = o) : (r = t + d * l, s = i + d * c);
+                                var u = n - r,
+                                    m = e - s;
+                                return Math.sqrt(u * u + m * m)
+                            }(objects[n].collider.pos.x, objects[n].collider.pos.y, p.A.x, p.A.y, p.B.x, p.B.y) <= objects[n].collider.rad && (d = false))
+                        });
+                        var u = e.scope[n.activePlayer.main];
+                        return d;
+                    },
                     h = null,
                     x = function () {
                         var n = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null;
@@ -1620,7 +1620,7 @@
                                 function () {
                                     var e = s.player,
                                         t = e[n.activePlayer.netData].dir;
-									// enemy detection icon
+                                    // enemy detection icon
                                     if (e && e[n.activePlayer.netData].dir) {
                                         var i = e.targetIndicator;
                                         if (!op.streamerMode.enabled) {
@@ -1824,7 +1824,7 @@
                                 x: 0,
                                 y: 0
                             }, n
-                         }(), E = c.bOnMouseDown, B = c.bOnMouseMove, window.removeEventListener("mousedown", c.bOnMouseDown), window.removeEventListener("mousemove", c.bOnMouseMove), P(), S(), window.addEventListener("mousedown", M), window.addEventListener("mousemove", D), window.addEventListener("keydown", O), window.addEventListener("keyup", R), a = e.scope[n.input.main].binds, o = e.scope[n.input.main].boundKeys, null != a[31] && 2 === a[31].code && 2 === a[31].type && (a[31].type = 1, a[31].code = 66, o[66] = true), r = true, window.events.add("playerBarn", "autoAimRenderCb")
+                        }(), E = c.bOnMouseDown, B = c.bOnMouseMove, window.removeEventListener("mousedown", c.bOnMouseDown), window.removeEventListener("mousemove", c.bOnMouseMove), P(), S(), window.addEventListener("mousedown", M), window.addEventListener("mousemove", D), window.addEventListener("keydown", O), window.addEventListener("keyup", R), a = e.scope[n.input.main].binds, o = e.scope[n.input.main].boundKeys, null != a[31] && 2 === a[31].code && 2 === a[31].type && (a[31].type = 1, a[31].code = 66, o[66] = true), r = true, window.events.add("playerBarn", "autoAimRenderCb")
                     },
                     unbind: function () {
                         window.events.remove("playerBarn", "autoAimRenderCb"), P(), S(), window.removeEventListener("mousedown", E), window.removeEventListener("mousemove", B), window.addEventListener("mousedown", E), window.addEventListener("mousemove", B), x(), I(), window.aimTarget = null, r = false
@@ -1865,37 +1865,37 @@
                     render: function () {
                         var t;
 
-						T(function () {
-							var t = [];
-							
-							if (!e.scope[n.playerBarn.main][n.playerBarn.players][e.scope[n.activeId]]) return t;
-	
-							for (var i, a = e.scope[n.activeId], o = e.scope[n.playerBarn.main][n.playerBarn.players][a].teamId, r = Object.keys(e.scope[n.playerBarn.main][n.playerBarn.players]), s = e.scope[n.activePlayer.main], c = 0; c < r.length; c++) {
-								
-								// Remove our id from array we don't need it
-								if ( r[c] != e.scope[n.activeId] ) {
-									var p = e.scope[n.objectCreator].idToObj[r[c]],
-										d = e.scope[n.playerBarn.main][n.playerBarn.players][r[c]];
-										
-									if ( e.scope[n.objectCreator].idToObj[r[c]] ) {
-										if ( !p[n.activePlayer.netData].dead || !p[n.activePlayer.netData].downed ) {
-											var po = p[n.activePlayer.netData].pos;
-											
-											var shoot_him = isNotCollideble( po )
-											
-											if ( shoot_him ) {
-												p && (l.showEnemiesActions && C(p), (i = p)[n.activePlayer.netData].dead || i[n.activePlayer.netData].downed || getTeam(a, o, d, r[c]) || !checkLayer(s, p) || (t[r[c]] = p))
-											} else {
-												p && (l.showEnemiesActions && C(p), (i = p)[n.activePlayer.netData].dead || i[n.activePlayer.netData].downed || getTeam(a, o, d, r[c]) || !checkLayer(s, p))
-											}
-										}
-									}
-								}
-							}
+                        T(function () {
+                            var t = [];
 
-							return t
-						}()), s.new && (t = s.averageTargetMousePosition, e.scope[n.input.main][n.input.input].mousePos = t)
-					
+                            if (!e.scope[n.playerBarn.main][n.playerBarn.players][e.scope[n.activeId]]) return t;
+
+                            for (var i, a = e.scope[n.activeId], o = e.scope[n.playerBarn.main][n.playerBarn.players][a].teamId, r = Object.keys(e.scope[n.playerBarn.main][n.playerBarn.players]), s = e.scope[n.activePlayer.main], c = 0; c < r.length; c++) {
+
+                                // Remove our id from array we don't need it
+                                if (r[c] != e.scope[n.activeId]) {
+                                    var p = e.scope[n.objectCreator].idToObj[r[c]],
+                                        d = e.scope[n.playerBarn.main][n.playerBarn.players][r[c]];
+
+                                    if (e.scope[n.objectCreator].idToObj[r[c]]) {
+                                        if (!p[n.activePlayer.netData].dead || !p[n.activePlayer.netData].downed) {
+                                            var po = p[n.activePlayer.netData].pos;
+
+                                            var shoot_him = isNotCollideble(po)
+
+                                            if (shoot_him) {
+                                                p && (l.showEnemiesActions && C(p), (i = p)[n.activePlayer.netData].dead || i[n.activePlayer.netData].downed || getTeam(a, o, d, r[c]) || !checkLayer(s, p) || (t[r[c]] = p))
+                                            } else {
+                                                p && (l.showEnemiesActions && C(p), (i = p)[n.activePlayer.netData].dead || i[n.activePlayer.netData].downed || getTeam(a, o, d, r[c]) || !checkLayer(s, p))
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            return t
+                        }()), s.new && (t = s.averageTargetMousePosition, e.scope[n.input.main][n.input.input].mousePos = t)
+
                     }
                 }
             }
@@ -2168,7 +2168,7 @@
                             r = e.scope[n.activePlayer.main][n.activePlayer.netData],
                             s = e.scope[n.activePlayer.main][n.activePlayer.localData];
                         if (o && o.active && function (t) {
-                                
+
                                 return e.scope[n.lootBarn.main][n.lootBarn.lootPool][n.lootBarn.pool].filter(function (n) {
                                     //console.log(t)
                                     return n.active && u(n, t) < l.safeDistance
@@ -3300,7 +3300,7 @@
                         var pos = (u = e.scope[n.activePlayer.main]).pos,
                             objects = e.scope[n.objectCreator].idToObj,
                             shootable = function (curObj) {
-								// what is this? :D
+                                // what is this? :D
                                 if (curObj.collidable && curObj.collidable) {
                                     if (curObj.isBush != undefined && curObj.isBush) {
                                         return true
@@ -3312,7 +3312,7 @@
                             collidableObjects = Object.keys(objects).filter(function (n) {
                                 var curObj = objects[n]
                                 if (typeof curObj.img == "string") {
-									// collidable elements filter
+                                    // collidable elements filter
                                     return void 0 !== objects[n].collidable && objects[n].collidable || !objects[n].isDoor || !objects[n].isBush || !objects[n].img.includes("stair")
                                 } else {
                                     return void 0 !== objects[n].collidable && objects[n].collidable
