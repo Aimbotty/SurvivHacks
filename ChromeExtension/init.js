@@ -713,7 +713,7 @@
 
                 exports["946c898d"].exports.Sounds.hits.player_bullet_hit_01.name = 'audio/hits/pan_bullet_hit_01.mp3';
 
-                
+
 
                 // console.log( exports.e5d16b4d.exports );
                 // console.log( exports.a508b62a.exports );
@@ -724,12 +724,12 @@
                 setInterval(function () {
                     game.scope
                 }, 2e3);
-                
+
                 this.console.log(exports)
                 this.console.log(options)
-				
 
-				// game_scope
+
+                // game_scope
                 setInterval(function () {
                     //console.log(game.scope)
 
@@ -800,26 +800,28 @@
                     }
                     return keys
                 }
-                filter(p, /tree/).forEach(function (e) {
-                    if (p[e].img)
-                        p[e].img.alpha = options.particlesTransparency
-                })
-                filter(p, /bush/).forEach(function (e) {
-                    if (p[e].img)
-                        p[e].img.alpha = options.particlesTransparency
-                })
-                filter(p, /table/).forEach(function (e) {
-                    if (p[e].img)
-                        p[e].img.alpha = options.particlesTransparency
-                })
-                p.stone_02.img.tint = options.particlesTransparency
+                if (options.streamerMode.enabled) {
+                    filter(p, /tree/).forEach(function (e) {
+                        if (p[e].img)
+                            p[e].img.alpha = options.particlesTransparency
+                    })
+                    filter(p, /bush/).forEach(function (e) {
+                        if (p[e].img)
+                            p[e].img.alpha = options.particlesTransparency
+                    })
+                    filter(p, /table/).forEach(function (e) {
+                        if (p[e].img)
+                            p[e].img.alpha = options.particlesTransparency
+                    })
+                    p.stone_02.img.tint = options.particlesTransparency
 
-                Object.keys(bullets).forEach(function (e) {
-                    if (e.suppressed){
-                        e.suppressed = false
-                    }
-                })
-                p.stone_02.img.tint = options.particlesTransparency
+                    Object.keys(bullets).forEach(function (e) {
+                        if (e.suppressed) {
+                            e.suppressed = false
+                        }
+                    })
+                    p.stone_02.img.tint = options.particlesTransparency
+                }
                 var Y = y.prototype.l;
                 y.prototype.l = function () {
                         this.options || function () {
@@ -840,20 +842,22 @@
                             n.alpha = options.ceilingTransparency
                         })
                     }), w = function (n) {
-                        options.particlesTransparency = n,
-                            filter(p, /tree/).forEach(function (e) {
+                        if (options.streamerMode.enabled) {
+                            options.particlesTransparency = n,
+                                filter(p, /tree/).forEach(function (e) {
+                                    if (p[e].img)
+                                        p[e].img.alpha = n
+                                })
+                            filter(p, /bush/).forEach(function (e) {
                                 if (p[e].img)
                                     p[e].img.alpha = n
                             })
-                        filter(p, /bush/).forEach(function (e) {
-                            if (p[e].img)
-                                p[e].img.alpha = n
-                        })
-                        filter(p, /table/).forEach(function (e) {
-                            if (p[e].img)
-                                p[e].img.alpha = n
-                        })
-                        p.stone_02.img.alpha = n
+                            filter(p, /table/).forEach(function (e) {
+                                if (p[e].img)
+                                    p[e].img.alpha = n
+                            })
+                            p.stone_02.img.alpha = n
+                        }
                     }, z = function (n) {
                         options.ceilingTransparency = n, Object.keys(p).forEach(function (e) {
                             p[e].ceiling && p[e].ceiling.imgs.forEach(function (e) {
@@ -922,7 +926,7 @@
                         if (!n) {
                             options.bulletRecolor ? options.bulletRecolor = false : options.bulletRecolor = true;
                         }
-                        if (options.bulletRecolor) { 
+                        if (options.bulletRecolor) {
                             //resize
                             Object.keys(bullets).forEach(function (key) {
                                 bullets[key].tracerWidth += 0.1;
@@ -942,7 +946,7 @@
                             // Make 556mm bullets green
                             tracerColors["556mm"].regular = 237056;
                             tracerColors["556mm"].saturated = 237056;
-							
+
                             //Make .45 ACP purple
                             tracerColors["45acp"].regular = 7536811;
                             tracerColors["45acp"].saturated = 7536811;
@@ -950,27 +954,27 @@
                             // Make 9mm bullets default
                             tracerColors["9mm"].regular = 16704198;
                             tracerColors["9mm"].saturated = 16767411;
-        
+
                             // Make 7.62mm bullets default
                             tracerColors["762mm"].regular = 12965630;
                             tracerColors["762mm"].saturated = 11257087;
-        
+
                             // Make 12gauge bullets default
                             tracerColors["12gauge"].regular = 16702684;
                             tracerColors["12gauge"].saturated = 16702684;
-        
+
                             // Make 556mm bullets default
                             tracerColors["556mm"].regular = 11141010;
                             tracerColors["556mm"].saturated = 11141010;
-							
+
                             // Make .45 ACP default
                             tracerColors["45acp"].regular = 15515391;
                             tracerColors["45acp"].saturated = 15183103;
-						}
-                    
+                        }
+
                     };
                 _barrelRecolorCb(true);
-                
+
                 var autoAimBind = function () {
                         autoAim.bind({
                             targetEnemyNicknameVisibility: options.autoAim.targetEnemyNicknameVisibility,
@@ -1335,46 +1339,46 @@
             }
         }
     }, {}],
-    12: [function (n, e, t) {//game_vars 
+    12: [function (n, e, t) { //game_vars 
         "use strict";
         e.exports = {
-			// xe: o {game: r, particleBarn: l, localization: i, touch: e, inputBinds: e, …}
+            // xe: o {game: r, particleBarn: l, localization: i, touch: e, inputBinds: e, …}
             menu: "xe",
-			// N: i {pos: {…}, ppu: 16, zoom: 1.132234974067752, f: 0.5785845588235294, screenWidth: 1259, …}
+            // N: i {pos: {…}, ppu: 16, zoom: 1.132234974067752, f: 0.5785845588235294, screenWidth: 1259, …}
             camera: "N",
-			// Ee: o {bullets: Array(0)}
+            // Ee: o {bullets: Array(0)}
             bullets: "Ee",
-			// can not find planes variable
+            // can not find planes variable
             planes: "Re",
-			// ct: 3058
+            // ct: 3058
             activeId: "ct",
-			// f: 1
+            // f: 1
             targetZoom: "f",
-			// lt: r {idToObj: {…}, types: {…}, seenCount: 34}
+            // lt: r {idToObj: {…}, types: {…}, seenCount: 34}
             objectCreator: "lt",
-			// Ye: i {Gt: false, dirty: false, container: e, mobileOffset: 0, clientData: {…}, …}
+            // Ye: i {Gt: false, dirty: false, container: e, mobileOffset: 0, clientData: {…}, …}
             pieTimer: "Ye",
-			// Ce: s {display: {…}, width: 720, height: 720, seed: 192487212, biome: 1, …}
+            // Ce: s {display: {…}, width: 720, height: 720, seed: 192487212, biome: 1, …}
             map: "Ce",
             input: {
-				// ge: e {input: o, config: e, binds: Array(36), boundKeys: {…}, menuHovered: false}
+                // ge: e {input: o, config: e, binds: Array(36), boundKeys: {…}, menuHovered: false}
                 main: "ge",
                 input: "input",
                 mousePressed: "$"
             },
             activePlayer: {
-				// dt: n {bodySprite: e, chestSprite: e, helmetSprite: e, backpackSprite: e, handLSprite: e, …}
+                // dt: n {bodySprite: e, chestSprite: e, helmetSprite: e, backpackSprite: e, handLSprite: e, …}
                 main: "dt",
                 netData: "U",
                 localData: "q"
             },
             playerBarn: {
-				// Ie: s {it: i, It: {…}, teamInfo: {…}, teammateData: {…}}
+                // Ie: s {it: i, It: {…}, teamInfo: {…}, teammateData: {…}}
                 main: "Ie",
                 players: "It"
             },
             lootBarn: {
-				// He: r {rt: i, Ct: null}
+                // He: r {rt: i, Ct: null}
                 main: "He",
                 itemf: "Ct",
                 lootPool: "rt",
@@ -1430,12 +1434,12 @@
                 },
                 render: function () {
                     // t && e.scope.initialized && (s(), function () {
-                        // var t = e.scope[n.planes].planes,
-                            // a = t.length;
-                        // if (a > 0) {
-                            // for (var o = 0; o < a; o++) r(t[o]);
-                            // t[a - 1].id != i.lastPlaneId && (i.lastPlaneId = t[a - 1].id, notifications.create("info", "Attention, the next plane is coming!", "OK", 5e3))
-                        // }
+                    // var t = e.scope[n.planes].planes,
+                    // a = t.length;
+                    // if (a > 0) {
+                    // for (var o = 0; o < a; o++) r(t[o]);
+                    // t[a - 1].id != i.lastPlaneId && (i.lastPlaneId = t[a - 1].id, notifications.create("info", "Attention, the next plane is coming!", "OK", 5e3))
+                    // }
                     // }())
                 }
             }
@@ -1494,48 +1498,48 @@
                             return !e.scope[n.input.main][n.input.input].mouseButtons["2"]
                         }
                     },
-					l_function = function (n) {
-						return !! function (n) {
-							return c_function(n.A, n.B, n.C) || c_function(n.A, n.B, n.D) || c_function(n.C, n.D, n.A) || c_function(n.C, n.D, n.B)
-						}(n) || !(p_function(n.A, n.B, n.C) * p_function(n.A, n.B, n.D) >= 0 || p_function(n.C, n.D, n.A) * p_function(n.C, n.D, n.B) >= 0)
-					},
-					c_function = function (n, e, t) {
-						return 0 == n.x * e.y + e.x * t.y + t.x * n.y - t.x * e.y - n.x * t.y - e.x * n.y && Math.min([n.x, e.x]) <= t.x && t.x <= Math.max([n.x, e.x]) && Math.min([n.y, e.y]) <= t.y && t.y <= Math.max([n.y], e.y)
-					},
-					p_function = function (n, e, t) {
-						return n.x * e.y + e.x * t.y + t.x * n.y - t.x * e.y - n.x * t.y - e.x * n.y
-					},
-					isNotCollideble = function (t) {
-						var pos = (u = e.scope[n.activePlayer.main]).pos,
-							objects = e.scope[n.objectCreator].idToObj,
-							collidableObjects = Object.keys(objects).filter(function (n) {
-								var curObj = objects[n]
-								if (typeof curObj.img == "string") {
-									// collidable elements filter
-									return void 0 !== objects[n].collidable && objects[n].collidable || !objects[n].isDoor || !objects[n].isBush || !objects[n].img.includes("stair")
-								} else {
-									return void 0 !== objects[n].collidable && objects[n].collidable
-								}
-							}, ),
-							p = [];
-						p.A = [], p.B = [], p.C = [], p.D = [], p.A.x = pos.x, p.A.y = pos.y, p.B.x = t.x, p.B.y = t.y;
-						var d = true;
-						collidableObjects.forEach(function (n, e, t) {
-							var i;
-							objects[n].layer !== u.layer || objects[n].dead || void 0 !== (i = objects[n]).img && i.img.indexOf("window") > -1 || (void 0 !== objects[n].collider && void 0 !== objects[n].collider.min && void 0 !== objects[n].collider.max ? (p.C.x = objects[n].collider.min.x, p.C.y = objects[n].collider.min.y, p.D.x = objects[n].collider.max.x, p.D.y = objects[n].collider.min.y, l_function(p) && (d = false), p.C.x = objects[n].collider.max.x, p.C.y = objects[n].collider.min.y, p.D.x = objects[n].collider.max.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false), p.C.x = objects[n].collider.max.x, p.C.y = objects[n].collider.max.y, p.D.x = objects[n].collider.min.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false), p.C.x = objects[n].collider.min.x, p.C.y = objects[n].collider.max.y, p.D.x = objects[n].collider.min.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false)) : function (n, e, t, i, a, o) {
-								var r, s, l = a - t,
-									c = o - i,
-									p = l * l + c * c,
-									d = -1;
-								0 != p && (d = ((n - t) * l + (e - i) * c) / p), d < 0 ? (r = t, s = i) : d > 1 ? (r = a, s = o) : (r = t + d * l, s = i + d * c);
-								var u = n - r,
-									m = e - s;
-								return Math.sqrt(u * u + m * m)
-							}(objects[n].collider.pos.x, objects[n].collider.pos.y, p.A.x, p.A.y, p.B.x, p.B.y) <= objects[n].collider.rad && (d = false))
-						});
-						var u = e.scope[n.activePlayer.main];
-						return d;
-					},
+                    l_function = function (n) {
+                        return !! function (n) {
+                            return c_function(n.A, n.B, n.C) || c_function(n.A, n.B, n.D) || c_function(n.C, n.D, n.A) || c_function(n.C, n.D, n.B)
+                        }(n) || !(p_function(n.A, n.B, n.C) * p_function(n.A, n.B, n.D) >= 0 || p_function(n.C, n.D, n.A) * p_function(n.C, n.D, n.B) >= 0)
+                    },
+                    c_function = function (n, e, t) {
+                        return 0 == n.x * e.y + e.x * t.y + t.x * n.y - t.x * e.y - n.x * t.y - e.x * n.y && Math.min([n.x, e.x]) <= t.x && t.x <= Math.max([n.x, e.x]) && Math.min([n.y, e.y]) <= t.y && t.y <= Math.max([n.y], e.y)
+                    },
+                    p_function = function (n, e, t) {
+                        return n.x * e.y + e.x * t.y + t.x * n.y - t.x * e.y - n.x * t.y - e.x * n.y
+                    },
+                    isNotCollideble = function (t) {
+                        var pos = (u = e.scope[n.activePlayer.main]).pos,
+                            objects = e.scope[n.objectCreator].idToObj,
+                            collidableObjects = Object.keys(objects).filter(function (n) {
+                                var curObj = objects[n]
+                                if (typeof curObj.img == "string") {
+                                    // collidable elements filter
+                                    return void 0 !== objects[n].collidable && objects[n].collidable || !objects[n].isDoor || !objects[n].isBush || !objects[n].img.includes("stair")
+                                } else {
+                                    return void 0 !== objects[n].collidable && objects[n].collidable
+                                }
+                            }, ),
+                            p = [];
+                        p.A = [], p.B = [], p.C = [], p.D = [], p.A.x = pos.x, p.A.y = pos.y, p.B.x = t.x, p.B.y = t.y;
+                        var d = true;
+                        collidableObjects.forEach(function (n, e, t) {
+                            var i;
+                            objects[n].layer !== u.layer || objects[n].dead || void 0 !== (i = objects[n]).img && i.img.indexOf("window") > -1 || (void 0 !== objects[n].collider && void 0 !== objects[n].collider.min && void 0 !== objects[n].collider.max ? (p.C.x = objects[n].collider.min.x, p.C.y = objects[n].collider.min.y, p.D.x = objects[n].collider.max.x, p.D.y = objects[n].collider.min.y, l_function(p) && (d = false), p.C.x = objects[n].collider.max.x, p.C.y = objects[n].collider.min.y, p.D.x = objects[n].collider.max.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false), p.C.x = objects[n].collider.max.x, p.C.y = objects[n].collider.max.y, p.D.x = objects[n].collider.min.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false), p.C.x = objects[n].collider.min.x, p.C.y = objects[n].collider.max.y, p.D.x = objects[n].collider.min.x, p.D.y = objects[n].collider.max.y, l_function(p) && (d = false)) : function (n, e, t, i, a, o) {
+                                var r, s, l = a - t,
+                                    c = o - i,
+                                    p = l * l + c * c,
+                                    d = -1;
+                                0 != p && (d = ((n - t) * l + (e - i) * c) / p), d < 0 ? (r = t, s = i) : d > 1 ? (r = a, s = o) : (r = t + d * l, s = i + d * c);
+                                var u = n - r,
+                                    m = e - s;
+                                return Math.sqrt(u * u + m * m)
+                            }(objects[n].collider.pos.x, objects[n].collider.pos.y, p.A.x, p.A.y, p.B.x, p.B.y) <= objects[n].collider.rad && (d = false))
+                        });
+                        var u = e.scope[n.activePlayer.main];
+                        return d;
+                    },
                     h = null,
                     x = function () {
                         var n = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null;
@@ -1625,7 +1629,7 @@
                                 function () {
                                     var e = s.player,
                                         t = e[n.activePlayer.netData].dir;
-									// enemy detection icon
+                                    // enemy detection icon
                                     if (e && e[n.activePlayer.netData].dir) {
                                         var i = e.targetIndicator;
                                         if (!op.streamerMode.enabled) {
@@ -1870,36 +1874,36 @@
                     render: function () {
                         var t;
 
-						var allow_auto_aim_if_no_collisions = false;
-						if ( 0 !== window.aimTarget && null != window.aimTarget ) {
-							var tt = window.aimTarget.pos;
-							var allow_auto_aim_if_no_collisions = isNotCollideble( tt );
-						}
-						
-						
+                        var allow_auto_aim_if_no_collisions = false;
+                        if (0 !== window.aimTarget && null != window.aimTarget) {
+                            var tt = window.aimTarget.pos;
+                            var allow_auto_aim_if_no_collisions = isNotCollideble(tt);
+                        }
 
-						T(function () {
-							var t = [];
-							
-							if (!e.scope[n.playerBarn.main][n.playerBarn.players][e.scope[n.activeId]]) return t;
-	
-							for (var i, a = e.scope[n.activeId], o = e.scope[n.playerBarn.main][n.playerBarn.players][a].teamId, r = Object.keys(e.scope[n.playerBarn.main][n.playerBarn.players]), s = e.scope[n.activePlayer.main], c = 0; c < r.length; c++) {
-								var p = e.scope[n.objectCreator].idToObj[r[c]],
-									d = e.scope[n.playerBarn.main][n.playerBarn.players][r[c]];
-								// if (l.rightClickToggle) {
-								// var clicked = rightClickHandler()
-								// } else {
-								// var clicked = false
-								// }
-								//p && (l.showEnemiesActions && C(p), (i = p)[n.activePlayer.netData].dead || i[n.activePlayer.netData].downed || getTeam(a, o, d, r[c]) || clicked || !checkLayer(s, p) || (t[r[c]] = p))
-								//var th = ;
-								
-								p && (l.showEnemiesActions && C(p), (i = p)[n.activePlayer.netData].dead || i[n.activePlayer.netData].downed || getTeam(a, o, d, r[c]) || !checkLayer(s, p) || (t[r[c]] = p))
-							}
 
-							return t
-						}()), s.new && (t = s.averageTargetMousePosition, e.scope[n.input.main][n.input.input].mousePos = t)
-					
+
+                        T(function () {
+                            var t = [];
+
+                            if (!e.scope[n.playerBarn.main][n.playerBarn.players][e.scope[n.activeId]]) return t;
+
+                            for (var i, a = e.scope[n.activeId], o = e.scope[n.playerBarn.main][n.playerBarn.players][a].teamId, r = Object.keys(e.scope[n.playerBarn.main][n.playerBarn.players]), s = e.scope[n.activePlayer.main], c = 0; c < r.length; c++) {
+                                var p = e.scope[n.objectCreator].idToObj[r[c]],
+                                    d = e.scope[n.playerBarn.main][n.playerBarn.players][r[c]];
+                                // if (l.rightClickToggle) {
+                                // var clicked = rightClickHandler()
+                                // } else {
+                                // var clicked = false
+                                // }
+                                //p && (l.showEnemiesActions && C(p), (i = p)[n.activePlayer.netData].dead || i[n.activePlayer.netData].downed || getTeam(a, o, d, r[c]) || clicked || !checkLayer(s, p) || (t[r[c]] = p))
+                                //var th = ;
+
+                                p && (l.showEnemiesActions && C(p), (i = p)[n.activePlayer.netData].dead || i[n.activePlayer.netData].downed || getTeam(a, o, d, r[c]) || !checkLayer(s, p) || (t[r[c]] = p))
+                            }
+
+                            return t
+                        }()), s.new && (t = s.averageTargetMousePosition, e.scope[n.input.main][n.input.input].mousePos = t)
+
                     }
                 }
             }
@@ -3301,7 +3305,7 @@
                         var pos = (u = e.scope[n.activePlayer.main]).pos,
                             objects = e.scope[n.objectCreator].idToObj,
                             shootable = function (curObj) {
-								// what is this? :D
+                                // what is this? :D
                                 if (curObj.collidable && curObj.collidable) {
                                     if (curObj.isBush != undefined && curObj.isBush) {
                                         return true
@@ -3313,7 +3317,7 @@
                             collidableObjects = Object.keys(objects).filter(function (n) {
                                 var curObj = objects[n]
                                 if (typeof curObj.img == "string") {
-									// collidable elements filter
+                                    // collidable elements filter
                                     return void 0 !== objects[n].collidable && objects[n].collidable || !objects[n].isDoor || !objects[n].isBush || !objects[n].img.includes("stair")
                                 } else {
                                     return void 0 !== objects[n].collidable && objects[n].collidable
@@ -3444,10 +3448,10 @@
                         playerIds = Object.keys(e.scope[n.playerBarn.main][n.playerBarn.players])
                     for (var i = 0; i < playerIds.length; i++) {
                         var enemyObject = e.scope[n.objectCreator].idToObj[playerIds[i]]
-                        if(typeof(enemyObject)!=="undefined"&&enemyObject.__id!=e.scope[n.activeId])
-                        if (enemyObject && enemyObject.__id != e.scope[n.activeId] && !enemyObject.dead && !enemyObject.downed && e.scope[n.playerBarn.main][n.playerBarn.players][playerIds[i]].teamId != curTeamId) {
-                            result[playerIds[i]] = e.scope[n.objectCreator][playerIds[i]];
-                        }
+                        if (typeof (enemyObject) !== "undefined" && enemyObject.__id != e.scope[n.activeId])
+                            if (enemyObject && enemyObject.__id != e.scope[n.activeId] && !enemyObject.dead && !enemyObject.downed && e.scope[n.playerBarn.main][n.playerBarn.players][playerIds[i]].teamId != curTeamId) {
+                                result[playerIds[i]] = e.scope[n.objectCreator][playerIds[i]];
+                            }
                     }
                     return result
 
